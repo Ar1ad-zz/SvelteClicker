@@ -24,6 +24,10 @@
 	}
 </script>
 
+<svelte:head>
+	<title>Svelte-Clicker</title>
+</svelte:head>
+
 <main>
 	<div>
 		<h1>Hello {name}!</h1>
