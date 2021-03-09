@@ -93,6 +93,7 @@
 	main {
 		text-align: center;
 		max-width: 240px;
+		min-height: 100vh;
 		margin: 0 auto;
 		height: 90%;
 		display: grid;
