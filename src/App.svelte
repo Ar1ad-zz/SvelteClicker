@@ -59,7 +59,6 @@
 	<title>Svelte-Clicker</title>
 </svelte:head>
 
-
 <main>
 	<div class="grid-container-Main">
 		<div>
@@ -94,6 +93,7 @@
 	main {
 		text-align: center;
 		max-width: 240px;
+		min-height: 100vh;
 		margin: 0 auto;
 		height: 90%;
 		display: grid;
@@ -136,6 +136,8 @@
 	}
 
 	footer{
+		grid-column-start:ClickAreaStart;
+		grid-column-end:UpgradeAreaEnd;
 		grid-row-start: FooterStart;
 		grid-row-end: FooterEnd;
 		background-color: darkslategray;
