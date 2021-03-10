@@ -1,54 +1,68 @@
 <script lang="ts">
-	let coin = 0;
-	let clickpower = 1;
-	let CoinPS = 0;
 	
-	var timer = setInterval(_GiveCPS, 1000)
+	var timer = setInterval(_GiveCPS, 100)
+
+	window.Give = Give;
+	
+
+	let values = {
+		coins: 0,
+		coinsPS: 0,
+		clickpower: 1,
+	};
+
 
 	let upgrades1 = 0
 	let upgrades2 = 0
+
+	
 
 	let Cost_upgrade1 = 10;
 	let Cost_upgrade2 = 50;
 
 	let psupgrades1 = 0
 
-	let Cost_psupgrade1 = 100;
+	let Cost_psupgrade1 = 1;
 
 	function _GiveCPS(){
-		coin += CoinPS
+		values.coins += (values.coinsPS/10)
 	}
 
 	function _CoinClicked(){
-		coin += clickpower
+		values.coins += values.clickpower
 	}
+
+	export function Give(type: string, amount: number){
+		values[type] += amount
+	}
+
 	function _Buyable(cost){
-		if (coin >= cost){
+		if (values.coins >= cost){
 			return true;
 		}
 	}
 	function _Upgrade1(){
 		if(_Buyable(Cost_upgrade1)){
-			clickpower += 1
+			values.clickpower += 1
 			upgrades1 += 1
-			coin -= Cost_upgrade1
-			Cost_upgrade1 = Math.round(Math.pow((upgrades1), 2) * upgrades1) + 10
+			values.coins -= Cost_upgrade1
+			Cost_upgrade1 = Math.pow((upgrades1), 2) * upgrades1 + 10
 		}
 	}
 	function _Upgrade2(){
 		if(_Buyable(Cost_upgrade2)){
-			clickpower += 2
+			values.clickpower += 2
 			upgrades2 += 1
-			coin -= Cost_upgrade2
-			Cost_upgrade2 = 10 * Math.round(Math.pow((upgrades2 * 2), 2) * upgrades2) + 50
+			values.coins -= Cost_upgrade2
+			Cost_upgrade2 = 10 * Math.pow((upgrades2 * 2), 2) * upgrades2 + 50
 		}
 	}
 	function _PsUpgrade1(){
 		if(_Buyable(Cost_psupgrade1)){
-			CoinPS += 1
+			values.coinsPS += 1
 			psupgrades1 += 1
-			coin -= Cost_psupgrade1
-			Cost_psupgrade1 = 10 * Math.round(Math.pow((psupgrades1 * 2), 2) * psupgrades1) + 100
+			values.coins -= Cost_psupgrade1
+			Cost_psupgrade1 = 10 * Math.pow((psupgrades1 * 2), 2) * psupgrades1 + 1
 		}
 	}
 </script>
@@ -60,11 +74,11 @@
 <main>
 	<div class="grid-container-Main">
 		<div>
-			<p>ClickPower: {clickpower}</p>
-			<p>Coins/s: {CoinPS}</p>
+			<p>ClickPower: {values.clickpower}</p>
+			<p>Coins/s: {values.coinsPS}</p>
 			<button on:click="{_CoinClicked}">Get Coin</button>
 		</div>
-		<p>Coins = {coin}</p>
+		<p>Coins = {Math.round(values.coins)}</p>
 	</div>
 	
 	<div class="grid-container-Upgrades">
