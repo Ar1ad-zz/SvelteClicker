@@ -15,8 +15,6 @@
 
 	let Cost_psupgrade1 = 100;
 
-	
-
 	function _GiveCPS(){
 		coin += CoinPS
 	}
@@ -63,6 +61,7 @@
 	<div class="grid-container-Main">
 		<div>
 			<p>ClickPower: {clickpower}</p>
+			<p>Coins/s: {CoinPS}</p>
 			<button on:click="{_CoinClicked}">Get Coin</button>
 		</div>
 		<p>Coins = {coin}</p>
@@ -70,15 +69,15 @@
 	
 	<div class="grid-container-Upgrades">
 		<div class="upgradeButtons">
-			<button on:click="{_Upgrade1}">+1</button>
+			<button on:click="{_Upgrade1}">+1 Click</button>
 			<p class="upgradeCost">costs: {Cost_upgrade1} coins</p>
 		</div>
 		<div class="upgradeButtons">
-			<button on:click="{_Upgrade2}">+2</button>
+			<button on:click="{_Upgrade2}">+2 Click</button>
 			<p class="upgradeCost">costs: {Cost_upgrade2} coins</p>
 		</div>
 		<div class="upgradeButtons">
-			<button on:click="{_PsUpgrade1}">+2</button>
+			<button on:click="{_PsUpgrade1}">+1 cPS</button>
 			<p class="upgradeCost">costs: {Cost_psupgrade1} coins</p>
 		</div>
 	</div>
